@@ -11,12 +11,13 @@ st.title("🏦 Bank Customer Churn Analytics")
 @st.cache_resource
 def get_connection():
     conn = snowflake.connector.connect(
-        user="Tejaswi3597",
-        password="22761A05H4tejaswi@",
-        account="KWGTTUX-JI87365",   # example: ab12345.ap-south-1.aws
-        warehouse="BANK_WH",
-        database="BANK_DB",
-        schema="GOLD"
+        user=os.getenv("SNOWFLAKE_USER"),
+        password=os.getenv("SNOWFLAKE_PASSWORD"),
+        account=os.getenv("SNOWFLAKE_ACCOUNT"),
+        warehouse=os.getenv("SNOWFLAKE_WAREHOUSE"),
+        database=os.getenv("SNOWFLAKE_DATABASE"),
+        schema=os.getenv("SNOWFLAKE_SCHEMA"),
+        role=os.getenv("SNOWFLAKE_ROLE")
     )
     return conn
 
